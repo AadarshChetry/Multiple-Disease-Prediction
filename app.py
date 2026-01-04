@@ -42,17 +42,10 @@ html, body, [class*="css"]  {
 # --------------------------------------------------
 # LOAD MODELS
 # --------------------------------------------------
-diabetes_model = pickle.load(open(
-    "C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/diabetes_model.sav", "rb"
-))
+pickle.load(open("saved_models/diabetes_model.sav", "rb"))
+pickle.load(open("saved_models/heart_disease_model.sav", "rb"))
+pickle.load(open("saved_models/parkinsons_model.sav", "rb"))
 
-heart_disease_model = pickle.load(open(
-    "C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/heart_disease_model.sav", "rb"
-))
-
-parkinsons_model = pickle.load(open(
-    "C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/parkinsons_model.sav", "rb"
-))
 
 # --------------------------------------------------
 # PREDICTION FUNCTIONS
@@ -177,3 +170,4 @@ if selected == "Parkinsons Prediction":
             st.success(predict_parkinsons(data))
         except:
             st.error("❌ Please enter valid numeric values in all fields")
+
