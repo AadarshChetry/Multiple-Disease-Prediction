@@ -86,6 +86,7 @@ if selected == "Diabetes Prediction":
 # HEART DISEASE PAGE
 # ==================================================
 if selected == "Heart Disease Prediction":
+    st.title("🫀Heart Disease Prediction")
 
     st.markdown('<div class="main-title">Heart Disease Prediction</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-title">Clinical parameters based heart risk analysis</div>', unsafe_allow_html=True)
@@ -205,5 +206,6 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
