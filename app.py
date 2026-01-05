@@ -45,7 +45,7 @@ html, body, [class*="css"]  {
 diabetes_model = pickle.load(open("saved_models/diabetes_model.sav", "rb"))
 heart_disease_model = pickle.load(open("saved_models/heart_disease_model.sav", "rb"))
 parkinsons_model = pickle.load(open("saved_models/parkinsons_model.sav", "rb"))
-breast_cancer_model = pickle.load(open("saved_models/breast_cancer.sav", "rb"))
+breast_cancer_model = pickle.load(open("saved_models/breast_cancer_model.sav", "rb"))
 
 # --------------------------------------------------
 # PREDICTION FUNCTIONS
@@ -182,3 +182,4 @@ if selected == "Breast Cancer Prediction":
             st.success(predict_breast_cancer(data))
         except:
             st.error("❌ Enter valid numeric values")
+
