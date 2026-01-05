@@ -88,9 +88,6 @@ if selected == "Diabetes Prediction":
 if selected == "Heart Disease Prediction":
     st.title("🫀Heart Disease Prediction")
 
-    st.markdown('<div class="main-title">Heart Disease Prediction</div>', unsafe_allow_html=True)
-    st.markdown('<div class="sub-title">Clinical parameters based heart risk analysis</div>', unsafe_allow_html=True)
-
     with st.form("heart_form"):
         age = st.text_input("Age (years)", placeholder="e.g. 45")
         sex = st.text_input("Sex (1 = Male, 0 = Female)", placeholder="e.g. 1")
@@ -206,6 +203,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
