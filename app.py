@@ -116,14 +116,20 @@ if selected == "Heart Disease Prediction":
             st.warning("⚠️ Please fill in all fields")
         else:
             try:
-                data = [
+                data = np.array([[
                     float(age), float(sex), float(cp), float(trestbps),
                     float(chol), float(fbs), float(restecg), float(thalach),
                     float(exang), float(oldpeak), float(slope),
                     float(ca), float(thal)
-                ]
+                ]])
 
-                st.success(predict_heart(data))
+                data = np.array([data])
+prediction = heart_disease_model.predict(data)
+
+if prediction[0] == 1:
+    st.error("❌ Person is likely to have Heart Disease")
+else:
+    st.success("✅ Person is NOT likely to have Heart Disease")
 
             except ValueError:
                 st.error("❌ Please enter valid numeric values only")
@@ -203,6 +209,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
