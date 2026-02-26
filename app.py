@@ -87,26 +87,26 @@ if selected == "Heart Disease Prediction":
     st.title("🫀Heart Disease Prediction")
 
     with st.form("heart_form"):
-    col1, col2 = st.columns(2)
+        col1, col2 = st.columns(2)
 
-    with col1:
-        age = st.number_input("Age (years)", min_value=0, step=1)
-        sex = st.number_input("Sex (1 = Male, 0 = Female)", min_value=0, max_value=1, step=1)
-        cp = st.number_input("Chest Pain Type (0–3)", min_value=0, max_value=3, step=1)
-        trestbps = st.number_input("Resting Blood Pressure (mm Hg)", min_value=0)
-        chol = st.number_input("Serum Cholesterol (mg/dL)", min_value=0)
-        fbs = st.number_input("Fasting Blood Sugar > 120 mg/dL (1 = True, 0 = False)", min_value=0, max_value=1, step=1)
+        with col1:
+            age = st.number_input("Age (years)", min_value=0, step=1)
+            sex = st.number_input("Sex (1 = Male, 0 = Female)", min_value=0, max_value=1, step=1)
+            cp = st.number_input("Chest Pain Type (0–3)", min_value=0, max_value=3, step=1)
+            trestbps = st.number_input("Resting Blood Pressure (mm Hg)", min_value=0)
+            chol = st.number_input("Serum Cholesterol (mg/dL)", min_value=0)
+            fbs = st.number_input("Fasting Blood Sugar > 120 mg/dL (1 = True, 0 = False)", min_value=0, max_value=1, step=1)
 
-   with col2:
-       restecg = st.number_input("Resting ECG Results (0–2)", min_value=0, max_value=2, step=1)
-       thalach = st.number_input("Maximum Heart Rate Achieved", min_value=0)
-       exang = st.number_input("Exercise Induced Angina (1 = Yes, 0 = No)", min_value=0, max_value=1, step=1)
-       oldpeak = st.number_input("ST Depression Induced by Exercise", min_value=0.0, format="%.2f")
-       slope = st.number_input("Slope of Peak Exercise ST Segment (0–2)", min_value=0, max_value=2, step=1)
-       ca = st.number_input("Number of Major Vessels (0–4)", min_value=0, max_value=4, step=1)
-       thal = st.number_input("Thalassemia (1 = Normal, 2 = Fixed Defect, 3 = Reversible)", min_value=1, max_value=3, step=1)
+        with col2:
+            restecg = st.number_input("Resting ECG Results (0–2)", min_value=0, max_value=2, step=1)
+            thalach = st.number_input("Maximum Heart Rate Achieved", min_value=0)
+            exang = st.number_input("Exercise Induced Angina (1 = Yes, 0 = No)", min_value=0, max_value=1, step=1)
+            oldpeak = st.number_input("ST Depression Induced by Exercise", min_value=0.0, format="%.2f")
+            slope = st.number_input("Slope of Peak Exercise ST Segment (0–2)", min_value=0, max_value=2, step=1)
+            ca = st.number_input("Number of Major Vessels (0–4)", min_value=0, max_value=4, step=1)
+            thal = st.number_input("Thalassemia (1 = Normal, 2 = Fixed Defect, 3 = Reversible)", min_value=1, max_value=3, step=1)
 
-  submit = st.form_submit_button("Check Heart Disease")
+     submit = st.form_submit_button("Check Heart Disease")
 
     if submit:
         inputs = [
@@ -212,6 +212,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
