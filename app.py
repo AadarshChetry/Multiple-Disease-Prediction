@@ -103,8 +103,6 @@ if selected == "Heart Disease Prediction":
             exang = st.text_input("Exercise Induced Angina (1 = Yes, 0 = No)", placeholder="e.g. 0")
             oldpeak = st.text_input("ST Depression", placeholder="e.g. 1.5")
             slope = st.text_input("Slope (0-2)", placeholder="e.g. 2")
-            ca = st.text_input("Major Vessels (0-3)", placeholder="e.g. 0")
-            thal = st.text_input("Thal (1-3)", placeholder="e.g. 2")
 
         submit = st.form_submit_button("Check Heart Disease")
 
@@ -204,6 +202,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
