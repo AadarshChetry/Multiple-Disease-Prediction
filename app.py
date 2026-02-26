@@ -129,7 +129,7 @@ if selected == "Heart Disease Prediction":
                 else:
                    st.success("✅ Person is NOT likely to have Heart Disease")
 
-            except ValueError:
+            except:
                 st.error("❌ Please enter valid numeric values only")
 
 
@@ -207,6 +207,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
