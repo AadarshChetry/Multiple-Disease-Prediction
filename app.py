@@ -106,10 +106,10 @@ if selected == "Heart Disease Prediction":
         submit = st.form_submit_button("Check Heart Disease")
 
     if submit:
-    fields = [
-        age, sex, cp, trestbps, chol, fbs,
-        restecg, thalach, exang, oldpeak,
-        slope, ca, thal
+       fields = [
+          age, sex, cp, trestbps, chol, fbs,
+          restecg, thalach, exang, oldpeak,
+          slope, ca, thal
     ]
 
     if any(f.strip() == "" for f in fields):
@@ -208,6 +208,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
