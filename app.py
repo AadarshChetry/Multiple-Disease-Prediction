@@ -123,14 +123,13 @@ if selected == "Heart Disease Prediction":
                     float(chol), float(fbs), float(restecg),
                     float(thalach), float(exang), float(oldpeak),
                     float(slope), float(ca), float(thal)]])
+                
+               prediction = heart_disease_model.predict(data)
 
-                prediction = heart_disease_model.predict(data)
-
-                if prediction[0] == 1:
-                    st.error("❌ Person is likely to have Heart Disease")
-                else:
+               if prediction[0] == 1:
+                   st.error("❌ Person is likely to have Heart Disease")
+               else:
                     st.success("✅ Person is NOT likely to have Heart Disease")
-
             except:
                 st.error("❌ Please enter valid numeric values")
 
@@ -208,6 +207,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
