@@ -112,7 +112,7 @@ if selected == "Heart Disease Prediction":
         inputs = [
             age, sex, cp, trestbps, chol, fbs,
             restecg, thalach, exang, oldpeak,
-            slope, ca, thal
+            slope
         ]
 
         if any(i.strip() == "" for i in inputs):
@@ -204,6 +204,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
