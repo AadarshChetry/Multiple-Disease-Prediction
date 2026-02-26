@@ -106,33 +106,32 @@ if selected == "Heart Disease Prediction":
         submit = st.form_submit_button("Check Heart Disease")
 
     if submit:
-        fields = [
-            age, sex, cp, trestbps, chol, fbs,
-            restecg, thalach, exang, oldpeak,
-            slope, ca, thal
-        ]
+    fields = [
+        age, sex, cp, trestbps, chol, fbs,
+        restecg, thalach, exang, oldpeak,
+        slope, ca, thal
+    ]
 
-        if any(f.strip() == "" for f in fields):
-            st.warning("⚠️ Please fill in all fields")
-        else:
-            try:
-                data = np.array([[
-                    float(age), float(sex), float(cp), float(trestbps),
-                    float(chol), float(fbs), float(restecg), float(thalach),
-                    float(exang), float(oldpeak), float(slope),
-                    float(ca), float(thal)
-                ]])
+    if any(f.strip() == "" for f in fields):
+        st.warning("⚠️ Please fill in all fields")
+    else:
+        try:
+            data = np.array([[
+                float(age), float(sex), float(cp), float(trestbps),
+                float(chol), float(fbs), float(restecg), float(thalach),
+                float(exang), float(oldpeak), float(slope),
+                float(ca), float(thal)
+            ]])
 
-                data = np.array([data])
-prediction = heart_disease_model.predict(data)
+            prediction = heart_disease_model.predict(data)
 
-if prediction[0] == 1:
-    st.error("❌ Person is likely to have Heart Disease")
-else:
-    st.success("✅ Person is NOT likely to have Heart Disease")
+            if prediction[0] == 1:
+                st.error("❌ Person is likely to have Heart Disease")
+            else:
+                st.success("✅ Person is NOT likely to have Heart Disease")
 
-            except ValueError:
-                st.error("❌ Please enter valid numeric values only")
+        except ValueError:
+            st.error("❌ Please enter valid numeric values only")
 
 
 # =====================================================
@@ -209,6 +208,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
