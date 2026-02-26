@@ -79,12 +79,9 @@ if selected == "Diabetes Prediction":
             except:
                 st.error("❌ Please enter valid numeric values")
 
-# =====================================================
-# ❤️ HEART DISEASE
-# =====================================================
 
 # ==================================================
-# ❤️ HEART DISEASE PAGE (FIXED VERSION)
+# ❤️ HEART DISEASE PAGE
 # ==================================================
 if selected == "Heart Disease Prediction":
     st.title("🫀 Heart Disease Prediction")
@@ -125,7 +122,6 @@ if selected == "Heart Disease Prediction":
             st.error("❌ Person is likely to have Heart Disease")
         else:
             st.success("✅ Person is NOT likely to have Heart Disease")
-
 
 # =====================================================
 # 🧠 PARKINSON'S
@@ -201,6 +197,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
