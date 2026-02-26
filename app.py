@@ -84,56 +84,51 @@ if selected == "Diabetes Prediction":
 # ❤️ HEART DISEASE
 # =====================================================
 if selected == "Heart Disease Prediction":
-    st.title("🫀 Heart Disease Prediction")
+    st.title("❤️ Heart Disease Prediction")
 
     with st.form("heart_form"):
         col1, col2 = st.columns(2)
 
         with col1:
-            age = st.text_input("Age (years)", placeholder="e.g. 45")
+            age = st.text_input("Age", placeholder="e.g. 45")
             sex = st.text_input("Sex (1 = Male, 0 = Female)", placeholder="e.g. 1")
-            cp = st.text_input("Chest Pain Type (0–3)", placeholder="e.g. 2")
-            trestbps = st.text_input("Resting Blood Pressure (mm Hg)", placeholder="e.g. 130")
-            chol = st.text_input("Serum Cholesterol (mg/dL)", placeholder="e.g. 250")
-            fbs = st.text_input("Fasting Blood Sugar > 120 mg/dL (1 = True, 0 = False)", placeholder="e.g. 0")
+            cp = st.text_input("Chest Pain Type (0-3)", placeholder="e.g. 2")
+            trestbps = st.text_input("Resting Blood Pressure", placeholder="e.g. 120")
+            chol = st.text_input("Cholesterol", placeholder="e.g. 240")
+            fbs = st.text_input("Fasting Blood Sugar >120 (1 = Yes, 0 = No)", placeholder="e.g. 0")
 
         with col2:
-            restecg = st.text_input("Resting ECG Results (0–2)", placeholder="e.g. 1")
-            thalach = st.text_input("Maximum Heart Rate Achieved", placeholder="e.g. 150")
+            restecg = st.text_input("Resting ECG (0-2)", placeholder="e.g. 1")
+            thalach = st.text_input("Max Heart Rate Achieved", placeholder="e.g. 150")
             exang = st.text_input("Exercise Induced Angina (1 = Yes, 0 = No)", placeholder="e.g. 0")
-            oldpeak = st.text_input("ST Depression Induced by Exercise", placeholder="e.g. 1.2")
-            slope = st.text_input("Slope of Peak Exercise ST Segment (0–2)", placeholder="e.g. 1")
-            ca = st.text_input("Number of Major Vessels (0–4)", placeholder="e.g. 0")
-            thal = st.text_input("Thalassemia (1 = Normal, 2 = Fixed Defect, 3 = Reversible)", placeholder="e.g. 2")
+            oldpeak = st.text_input("ST Depression", placeholder="e.g. 1.5")
+            slope = st.text_input("Slope (0-2)", placeholder="e.g. 2")
+            ca = st.text_input("Major Vessels (0-3)", placeholder="e.g. 0")
+            thal = st.text_input("Thal (1-3)", placeholder="e.g. 2")
 
         submit = st.form_submit_button("Check Heart Disease")
 
     if submit:
         inputs = [
-           age, sex, cp, trestbps, chol, fbs,
-           restecg, thalach, exang, oldpeak,
-           slope, ca, thal
-       ]
+            age, sex, cp, trestbps, chol, fbs,
+            restecg, thalach, exang, oldpeak,
+            slope, ca, thal
+        ]
 
-      if any(i.strip() == "" for i in inputs):
-          st.warning("⚠️ Please fill in all fields")
-      else:
-          try:
-            st.write("Inputs received:", inputs)  # 👈 DEBUG LINE
+        if any(i.strip() == "" for i in inputs):
+            st.warning("⚠️ Please fill in all fields")
+        else:
+            try:
+                data = np.array([[float(i) for i in inputs]])
+                prediction = heart_disease_model.predict(data)
 
-            data = np.array([[float(i) for i in inputs]])
+                if prediction[0] == 1:
+                    st.error("❌ Person is likely to have Heart Disease")
+                else:
+                    st.success("✅ Person is NOT likely to have Heart Disease")
 
-            st.write("Converted data:", data)  # 👈 DEBUG LINE
-
-            prediction = heart_disease_model.predict(data)
-
-            if prediction[0] == 1:
-                st.error("❌ Person is likely to have Heart Disease")
-            else:
-                st.success("✅ Person is NOT likely to have Heart Disease")
-
-        except Exception as e:
-            st.error(f"ERROR: {e}")
+            except Exception as e:
+                st.error(f"Error: {e}")
 
 # =====================================================
 # 🧠 PARKINSON'S
@@ -209,6 +204,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
