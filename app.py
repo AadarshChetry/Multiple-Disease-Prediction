@@ -106,36 +106,23 @@ if selected == "Heart Disease Prediction":
             ca = st.number_input("Number of Major Vessels (0–4)", min_value=0, max_value=4, step=1)
             thal = st.number_input("Thalassemia (1 = Normal, 2 = Fixed Defect, 3 = Reversible)", min_value=1, max_value=3, step=1)
 
-     submit = st.form_submit_button("Check Heart Disease")
+        submit = st.form_submit_button("Check Heart Disease")
 
     if submit:
-        inputs = [
+        data = np.array([[
             age, sex, cp, trestbps, chol, fbs,
             restecg, thalach, exang, oldpeak,
             slope, ca, thal
-        ]
+        ]])
 
-        if any(f.strip() == "" for f in fields):
-            st.warning("⚠️ Please fill in all fields")
+        prediction = heart_disease_model.predict(data)
+
+        if prediction[0] == 1:
+            st.error("❌ Person is likely to have Heart Disease")
         else:
-            try:
-                data = [
-                    float(age), float(sex), float(cp), float(trestbps),
-                    float(chol), float(fbs), float(restecg), float(thalach),
-                    float(exang), float(oldpeak), float(slope),
-                    float(ca), float(thal)
-                ]
-
-                data = np.array([data])
-                prediction = heart_disease_model.predict(data)
-
-                if prediction[0] == 1:
-                   st.error("❌ Person is likely to have Heart Disease")
-                else:
-                   st.success("✅ Person is NOT likely to have Heart Disease")
-
-            except:
-                st.error("❌ Please enter valid numeric values only")
+            st.success("✅ Person is NOT likely to have Heart Disease")
+    except:
+        st.error("❌ Please enter valid numeric values")
 
 
 # =====================================================
@@ -212,6 +199,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
