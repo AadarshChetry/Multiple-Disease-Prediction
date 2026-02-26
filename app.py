@@ -116,7 +116,7 @@ if selected == "Heart Disease Prediction":
        ]
 
       if any(i.strip() == "" for i in inputs):
-         st.warning("⚠️ Please fill in all fields")
+          st.warning("⚠️ Please fill in all fields")
       else:
           try:
             st.write("Inputs received:", inputs)  # 👈 DEBUG LINE
@@ -209,6 +209,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
