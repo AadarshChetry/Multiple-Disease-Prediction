@@ -110,28 +110,30 @@ if selected == "Heart Disease Prediction":
 
     if submit:
         inputs = [
-            age, sex, cp, trestbps, chol, fbs,
-            restecg, thalach, exang, oldpeak,
-            slope, ca, thal
-        ]
+           age, sex, cp, trestbps, chol, fbs,
+           restecg, thalach, exang, oldpeak,
+           slope, ca, thal
+       ]
 
-        if any(i.strip() == "" for i in inputs):
-            st.warning("⚠️ Please fill in all fields")
-        else:
-            try:
-               data = np.array([[float(age), float(sex), float(cp), float(trestbps),
-                    float(chol), float(fbs), float(restecg),
-                    float(thalach), float(exang), float(oldpeak),
-                    float(slope), float(ca), float(thal)]])
-                
-               prediction = heart_disease_model.predict(data)
+      if any(i.strip() == "" for i in inputs):
+         st.warning("⚠️ Please fill in all fields")
+      else:
+          try:
+            st.write("Inputs received:", inputs)  # 👈 DEBUG LINE
 
-               if prediction[0] == 1:
-                   st.error("❌ Person is likely to have Heart Disease")
-               else:
-                    st.success("✅ Person is NOT likely to have Heart Disease")
-            except:
-                st.error("❌ Please enter valid numeric values")
+            data = np.array([[float(i) for i in inputs]])
+
+            st.write("Converted data:", data)  # 👈 DEBUG LINE
+
+            prediction = heart_disease_model.predict(data)
+
+            if prediction[0] == 1:
+                st.error("❌ Person is likely to have Heart Disease")
+            else:
+                st.success("✅ Person is NOT likely to have Heart Disease")
+
+        except Exception as e:
+            st.error(f"ERROR: {e}")
 
 # =====================================================
 # 🧠 PARKINSON'S
@@ -207,6 +209,7 @@ if selected == "Breast Cancer Prediction":
                     st.success("✅ Benign Tumor")
             except:
                 st.error("❌ Invalid numeric input")
+
 
 
 
