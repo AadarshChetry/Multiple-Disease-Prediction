@@ -7,14 +7,14 @@ import numpy as np
 st.set_page_config(page_title="Multiple Disease Prediction", layout="wide", page_icon="🏥➕")
 
 
-diabetes_model = pickle.load(open("C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/diabetes_model.sav", "rb"))
-diabetes_scaler = pickle.load(open("C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/scaler.sav", "rb"))
-heart_disease_model = pickle.load(open("C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/heart_disease_model.sav", "rb"))
-heart_scaler = pickle.load(open("C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/heart_scaler.pkl", "rb"))
-parkinsons_model = pickle.load(open("C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/parkinsons_model.sav", "rb"))
-parkinsons_scaler = pickle.load(open("C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/parkinsons_scaler.pkl", "rb"))
-breast_cancer_model = pickle.load(open("C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/breast_cancer_model.sav", "rb"))
-breast_cancer_scaler = pickle.load(open("C:/Users/Aadarsh Chetry/Documents/6thSemProject/Multiple Disease Prediction/saved_models/breast_cancer_scaler.sav", "rb"))
+diabetes_model = pickle.load(open("saved_models/diabetes_model.sav", "rb"))
+diabetes_scaler = pickle.load(open("saved_models/scaler.sav", "rb"))
+heart_disease_model = pickle.load(open("saved_models/heart_disease_model.sav", "rb"))
+heart_scaler = pickle.load(open("saved_models/heart_scaler.pkl", "rb"))
+parkinsons_model = pickle.load(open("saved_models/parkinsons_model.sav", "rb"))
+parkinsons_scaler = pickle.load(open("saved_models/parkinsons_scaler.pkl", "rb"))
+breast_cancer_model = pickle.load(open("saved_models/breast_cancer_model.sav", "rb"))
+breast_cancer_scaler = pickle.load(open("saved_models/breast_cancer_scaler.sav", "rb"))
 
 
 with st.sidebar:
@@ -303,3 +303,4 @@ if selected == "Breast Cancer Prediction":
             st.write(f"Benign: {benign_prob*100:.2f}%")
 
             st.progress(float(malignant_prob))
+
