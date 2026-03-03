@@ -8,7 +8,7 @@ st.set_page_config(page_title="Multiple Disease Prediction", layout="wide", page
 
 
 diabetes_model = pickle.load(open("saved_models/diabetes_model.sav", "rb"))
-diabetes_scaler = pickle.load(open("saved_models/scaler.sav", "rb"))
+diabetes_scaler = pickle.load(open("saved_models/diabetes_scaler.sav", "rb"))
 heart_disease_model = pickle.load(open("saved_models/heart_disease_model.sav", "rb"))
 heart_scaler = pickle.load(open("saved_models/heart_scaler.pkl", "rb"))
 parkinsons_model = pickle.load(open("saved_models/parkinsons_model.sav", "rb"))
@@ -28,10 +28,9 @@ with st.sidebar:
                  default_index=0)
 
 
- # Diabetes Prediction Page   
+# Diabetes Prediction Page   
 if selected == "Diabetes Prediction":
 
-    # Page Title
     st.title("🩸 Diabetes Prediction")
 
     Pregnancies = st.text_input("Number of Pregnancies", placeholder="e.g. 0")
@@ -43,33 +42,59 @@ if selected == "Diabetes Prediction":
     DiabetesPedigreeFunction = st.text_input("Diabetes Pedigree Function", placeholder="e.g. 0.45")
     Age = st.text_input("Age (years)", placeholder="e.g. 30")
 
-    # code for Prediction
-    diabetes_diagnosis = ""
-
     if st.button("Diabetes Test Result"):
-    
-        input_data = [
-        
-            float(Pregnancies),
-            float(Glucose),
-            float(BloodPressure),
-            float(SkinThickness),
-            float(Insulin),
-            float(BMI),
-            float(DiabetesPedigreeFunction),
-            float(Age)
-        ]
 
-        input_data_scaled = diabetes_scaler.transform([input_data])
-        diabetes_diagnosis = diabetes_model.predict(input_data_scaled)
+        if (
+            Pregnancies.strip() == "" or
+            Glucose.strip() == "" or
+            BloodPressure.strip() == "" or
+            SkinThickness.strip() == "" or
+            Insulin.strip() == "" or
+            BMI.strip() == "" or
+            DiabetesPedigreeFunction.strip() == "" or
+            Age.strip() == ""
+        ):
+            st.error("⚠️ Please fill all the fields before submitting.")
 
-    
-        if diabetes_diagnosis[0] == 1:
-               diabetes_diagnosis = "The person is diabetic"
         else:
-              diabetes_diagnosis = "The person is not diabetic"
+            try:
+                input_data = [
+                    float(Pregnancies),
+                    float(Glucose),
+                    float(BloodPressure),
+                    float(SkinThickness),
+                    float(Insulin),
+                    float(BMI),
+                    float(DiabetesPedigreeFunction),
+                    float(Age)
+                ]
 
-        st.success(diabetes_diagnosis)
+                input_data_scaled = diabetes_scaler.transform([input_data])
+
+                prediction = diabetes_model.predict(input_data_scaled)
+                probability = diabetes_model.predict_proba(input_data_scaled)
+
+                no_diabetes_prob = probability[0][0]
+                diabetes_prob = probability[0][1]
+
+                st.subheader("Prediction Result")
+
+                if prediction[0] == 1:
+                    st.error("🔴 High Risk of Diabetes")
+                    st.write(f"Confidence: {diabetes_prob*100:.2f}%")
+                else:
+                    st.success("🟢 Low Risk of Diabetes")
+                    st.write(f"Confidence: {no_diabetes_prob*100:.2f}%")
+
+                st.write("---")
+                st.write("### Detailed Probabilities")
+                st.write(f"No Diabetes: {no_diabetes_prob*100:.2f}%")
+                st.write(f"Diabetes: {diabetes_prob*100:.2f}%")
+
+                st.progress(float(diabetes_prob))
+
+            except ValueError:
+                st.error("⚠️ Please enter valid numeric values.")
 
 
 # Heart Disease Prediction Page
@@ -303,4 +328,3 @@ if selected == "Breast Cancer Prediction":
             st.write(f"Benign: {benign_prob*100:.2f}%")
 
             st.progress(float(malignant_prob))
-
