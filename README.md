@@ -21,23 +21,23 @@ Parkinson’s Disease	Support Vector Machine (SVM)<br>
 Breast Cancer	Logistic Regression<br>
 
 ## 🛠️ Tech Stack
-Python
-Streamlit
-Scikit-learn
-NumPy
-Pandas
-Pickle
-GitHub
-Streamlit Cloud
+Python<br>
+Streamlit<br>
+Scikit-learn<br>
+NumPy<br>
+Pandas<br>
+Pickle<br>
+GitHub<br>
+Streamlit Cloud<br>
 
 ## 📊 Prediction Output
 
 The application displays:
 
-Disease Prediction Result
-Confidence Percentage
-Detailed Probability Scores
-Visual Progress Indicator
+Disease Prediction Result<br>
+Confidence Percentage<br>
+Detailed Probability Scores<br>
+Visual Progress Indicator<br>
 
 ## 🌐 Deployment
 
@@ -45,21 +45,25 @@ The project is deployed using Streamlit Community Cloud.
 
 ## 📸 Application Screenshots
 
-### 🏠 Home Page
+### 🩸 Diabetes Prediction
 
-(Add Screenshot)
+![Alt Text](Screenshots/DiabetesInput.jpeg)
+
+![Alt Text](Screenshots/DiabetesOutput.jpeg)
 
 ### ❤️ Heart Disease Prediction
 
-(Add Screenshot)
+![Alt Text](Screenshots/HeartDiseaseInput.jpeg)
+
+![Alt Text](Screenshots/HeartDiseaseOutput.jpeg)
 
 ### 🧠 Parkinson’s Prediction
 
-(Add Screenshot)
+![Alt Text](Screenshots/Parkinsons.jpeg)
 
 ### 🩺 Breast Cancer Prediction
 
-(Add Screenshot)
+![Alt Text](Screenshots/BreastCancer.jpeg)
 
 ## 📚 Datasets Used
 
@@ -81,5 +85,5 @@ Aadarsh Chetry<br>
 Akshay Shinde<br>
 Mayuri Patil<br>
 
-Final Year Machine Learning Project
+Final Year Machine Learning Project<br>
 Multiple Disease Prediction System
